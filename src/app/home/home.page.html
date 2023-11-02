@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Capacitor PWA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Capacitor PWA</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-button (click)="takePicture()"
+                expand="block">
+      <ion-icon name="camera" slot="start" />
+      Capture image
+    </ion-button>
+
+    <ion-img *ngIf="myImage" [src]="myImage" />
+
+    <ion-button (click)="getCurrentPosition()"
+                expand="block">
+      <ion-icon name="locate" slot="start" />
+      Get position
+    </ion-button>
+
+    <ion-card *ngIf="position">
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="location" slot="start" />
+          Lat: {{ position.coords.latitude }}
+        </ion-item>
+        <ion-item>
+          <ion-icon name="loacation" slot="start" />
+          Lng: {{ position.coords.longitude }}
+        </ion-item>
+      
+        <ion-button (click)="share()"
+                    expand="block"
+                    color="secondary">
+          <ion-icon name="share" slot="start" />
+          Share!
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
